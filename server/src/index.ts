@@ -7,7 +7,7 @@ import { checkProgress, promptVideo, uploadVideo } from "./services/gemini";
 // import { logger } from "./logger.ts";
 const app = express();
 // app.use(logger);
-app.use(cors());
+app.use(cors({ origin: 'https://capture-note-ai.vercel.app' }));
 app.use(express.json());
 // app.use("/api/", globalRouter);
 // connectDB();
