@@ -106,7 +106,7 @@ export default function MainContainer() {
     try {
       const formData = new FormData();
       formData.set("video", file);
-      const resp = await post("http://localhost:8000/api/upload", formData);
+      const resp = await post("wholesome-victory.railway.internal/api/upload", formData);
       console.log("uploadResult:", resp.data);
       setUploadResult(resp.data);
       setState(UploadState.Processing);
@@ -120,7 +120,7 @@ export default function MainContainer() {
   const checkProcessing = async (result: FileMetadataResponse) => {
     setTimeout(async () => {
       const progressResult = await post(
-        "http://localhost:8000/api/progress",
+        "wholesome-victory.railway.internal/api/progress",
         JSON.stringify({ result })
       );
       const state = progressResult.progress.state;
@@ -145,7 +145,7 @@ export default function MainContainer() {
   const postNotesRequest = async () => {
     try {
       const response = await post(
-        "http://localhost:8000/api/prompt",
+        "wholesome-victory.railway.internal/api/prompt",
         JSON.stringify({
           uploadResult,
           prompt: DEFAULT_PROMPT,
